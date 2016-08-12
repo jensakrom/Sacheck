@@ -32,13 +32,6 @@
     <string name="alert_dialog_cancel">Cancel</string>
 
 
-    <string name="basic_salary_txt">Basic Salary : </string>
-    <string name="fixedAllowed_txt">Fixed Allowed : </string>
-    <string name="transport_txt">Transportasi : </string>
-    <string name="meal_txt">Meal : </string>
-    <string name="travel_txt">Travel : </string>
-
-
 
 
 </resources>
