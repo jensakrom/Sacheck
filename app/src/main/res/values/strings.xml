@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Sacheck</string>
+    <string name="action_settings">Settings</string>
+    <string name="dialog_fragment_title">Check Salary</string>
+    <string name="dialog_edit_variable_title">Salary Variable</string>
+    <string name="hint_effective_work">Effective Work</string>
+    <string name="hint_benefit_health">Benefit Health</string>
+    <string name="hint_travel_count">Travel Count</string>
+    <string name="btn_check_salary">Check Salary</string>
+    <string name="btn_clear">Clear</string>
+    <string name="intruction">Fill your information to check salary</string>
+    <string name="add_variable">Add your salary variable</string>
+    <string name="hint_basic_salary">Basic Salary</string>
+    <string name="hint_fix_allowed">Fix Allowed</string>
+    <string name="hint_travel_var">Travel Variable</string>
+    <string name="hint_transport_var">Transport Variable</string>
+    <string name="hint_meal_var">Meal Variable</string>
+    <string name="hint_healt_benefit_var">Health Benefit Variable</string>
+
+
+    <string name="err_msg_effectivework">Enter your effective work in a month</string>
+    <string name="err_msg_benefithealth">Enter your benefit health</string>
+    <string name="err_msg_travelcount">Enter your travel count</string>
+
+    <string name="err_msg_fixAllowanceVar">Enter your Fix Allowance Variable</string>
+    <string name="err_msg_transport_var">Enter your Transport Variable</string>
+    <string name="err_msg_meal_var">Enter your Meal Variable</string>
+    <string name="err_msg_travel_var">Enter your Travel Variable</string>
+    <string name="err_msg_basic_salary">Enter your basic salary</string>
+
+    <string name="alert_dialog_ok">Ok</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+
+
+
+
+</resources>
