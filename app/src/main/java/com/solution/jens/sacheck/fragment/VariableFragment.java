@@ -10,6 +10,10 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,23 +24,64 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.solution.jens.sacheck.R;
+import com.solution.jens.sacheck.adapter.VariableAdapter;
+import com.solution.jens.sacheck.model.VariableSalary;
+
+import io.realm.RealmList;
 
 /**
  * Created by Jens on 7/13/2016.
  */
 public class VariableFragment extends Fragment {
 
+    private RecyclerView rvVariable;
+    private RealmList<VariableSalary> variables;
+    private VariableAdapter variableAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.variable_fragment, container, false);
-        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        initComponents(rootView);
+        return rootView;
+    }
+
+    private void initComponents(View view) {
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog();
             }
         });
-        return rootView;
+
+        initRecyclerListener(view);
+    }
+
+    private void initRecyclerListener(View view) {
+        rvVariable = (RecyclerView) view.findViewById(R.id.rv_variable);
+        rvVariable.setLayoutManager(new LinearLayoutManager(view.getContext().getApplicationContext()));
+        rvVariable.setItemAnimator(new DefaultItemAnimator());
+
+        ItemTouchHelper swipeToDismissTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT
+        ) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        });
+
+        swipeToDismissTouchHelper.attachToRecyclerView(rvVariable);
+    }
+
+    public void showVariables(RealmList<VariableSalary> aVariableSalaries){
+        variables = aVariableSalaries;
+        rvVariable.setAdapter(variableAdapter);
     }
 
     private void showDialog(){
@@ -53,9 +98,8 @@ public class VariableFragment extends Fragment {
     }
 
 
-    public static class CountDialogFragment extends DialogFragment {
 
-        private EditText txtbasicSalary;
+    public static class CountDialogFragment extends DialogFragment {
 
         public DialogFragment newInstance(int aTitle) {
             CountDialogFragment dialogFragment = new CountDialogFragment();

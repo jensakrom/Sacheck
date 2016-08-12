@@ -22,15 +22,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="@string/hint_basic_salary"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"/>
-
+            <include layout="@layout/content_variable"></include>
         </LinearLayout>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
